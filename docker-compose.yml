@@ -1,0 +1,6 @@
+version: "1.0"
+services:
+  atlasProb:
+    container_name: atlasProb
+    build: ./
+    restart: "no"
