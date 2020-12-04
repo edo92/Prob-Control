@@ -1,13 +1,13 @@
 from sensor import AtlasProb
 from util import Request
-
+import os
 import time
 
 
 class Socket:
     def __init__(self):
-        url = 'https://c2f82d141074ff41254776558b262db7.balena-devices.com'
-        self.request = Request(url)  # os.getenv('SERVER_URI')
+        url = os.getenv('SERVER_URI')
+        self.request = Request(url)
 
     def emit(self, data):
         self.request.post('/prob-data', {"prob": data})
@@ -19,7 +19,6 @@ class Program:
         self.socket = Socket()
 
     def data_stream(self, data):
-        print('data--->')
         print(data)
         self.socket.emit(data)
 
